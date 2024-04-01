@@ -7,8 +7,8 @@ contents = CSV.open(
   header_converters: :symbol
 )
 
-def clean_numbers(homephone)
-    homephone = homephone.to_s  # Convert homephone to string if it's not already
+def clean_numbers(homephone)    # Convert homephone to string if it's not already
+    homephone = homephone.to_s.gsub(/\D/, '')  # non-digit characters are removed prior to cleaning.
     case homephone.length
     when 10
         return homephone  # Good number
