@@ -8,14 +8,14 @@ contents = CSV.open(
 )
 
 def clean_numbers(homephone)
-    if homephone.nil? || homephone.length != 10
-        homephone = nil
-    elsif homephone.length = 11 && homephone[0] == '1'
-        homephone = homephone.to_s.chr[1..-1]
-    elsif homephone.length != 11 && homephone.length > 10
-        homephone = nil
+    homephone = homephone.to_s  # Convert homephone to string if it's not already
+    case homephone.length
+    when 10
+        return homephone  # Good number
+    when 11
+        return homephone[1..-1] if homephone[0] == '1'  # Trim the leading '1'
     end
-    return homephone
+    return nil  # Bad number for other cases.
 end
 
 contents.each do |row|
