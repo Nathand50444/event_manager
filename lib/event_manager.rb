@@ -6,8 +6,17 @@ def clean_zipcode(zipcode)
     zipcode.to_s.rjust(5, '0')[0..4]
 end
 
-def clean_numbers(homephone)
+def clean_numbers(homephone)    # Convert homephone to string if it's not already
+
+    homephone = homephone.to_s.gsub(/\D/, '')  # non-digit characters are removed prior to cleaning.
     
+    case homephone.length
+    when 10
+        return homephone  # Good number
+    when 11
+        return homephone[1..-1] if homephone[0] == '1'  # Trim the leading '1'
+    end
+    return nil  # Bad number for other cases.
 end
 
 def legislators_by_zipcode(zip)
@@ -51,6 +60,8 @@ contents.each do |row|
     name = row[:first_name]
   
     zipcode = clean_zipcode(row[:zipcode])
+
+    homephone = clean_numbers(row[:homephone])
   
     legislators = legislators_by_zipcode(zipcode)
   
