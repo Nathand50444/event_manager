@@ -2,10 +2,6 @@ require 'csv'
 
 registration_counts = Hash.new(0)   # Here we initialize a hash to store the counts for each hour.
 
-def clean_datetime
-
-end
-
 CSV.foreach(
     'event_attendees.csv',
     headers: true,
@@ -24,7 +20,7 @@ end
 max_reg_count = registration_counts.values.max  # Here we inspect the values within registration_counts and find the max. This is attributed to max_reg_count.
 
 peak_hours = registration_counts.select { |hour, count| count == max_reg_count}.keys    
-# Finally we inspect the key-value pairs in registration counts and find the value that matchs the max. 
+# Finally we inspect the key-value pairs in registration counts and find the value that matches the max. 
 # Once the max is identified, we attribute the key of that value to 'peak_hours'. This is our peak hour for advertising.
 
 if peak_hours.empty?
