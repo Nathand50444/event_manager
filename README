@@ -1,0 +1,23 @@
+# Event Manager
+================
+
+Overview
+--------
+
+The Event_Manager program allows users to quickly and efficiently process the provided data in 'event_attendees.csv', perform cleaning and calculate the optimum date/time from the dataset.
+
+Features
+--------
+
+* Data import: The program imports data from the CSV file 'event_attendees'.
+* Data cleaning: The program can clean numbers and zipcodes in the data.
+* Form letter generation: The program can generate form letters based on the data.
+* Peak registration hour analysis: The program can find the peak registration hours for events.
+
+Technical Details
+-----------------
+
+* The program is built using Ruby.
+* The program uses CSV files to store event data.
+* The program uses the `google/apis/civicinfo_v2` library to retrieve civic information.
+* The program uses the `erb` library to generate the final form letter.
